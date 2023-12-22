@@ -66,24 +66,33 @@ export function useUserDetails() {
                     alert(`Error with facebook login : ${JSON.stringify(response)}`)
                     navigateTo('/login')
                 } else {
-                    window.FB.api(`me?fields=id,name,email,birthday,gender`, function (response) {
+                    window.FB.api(`me?fields=id,name,email,birthday,gender,picture`, function (response) {
                         console.log('fb data resp', response);
                         if (response && !response.error) {
                             const age = response.birthday ? new Date().getFullYear() - new Date(response.birthday).getFullYear() : '-';
-                            let userDetails = { ...response, age: age };
-                            window.FB.api(`/${userId}/picture`, function (response) {
-                                console.log('fb pic resp', response);
-                                if (response && !response.error) {
-                                    const picture = response.data.url;
-                                    userDetails = { ...userDetails, picture: picture };
-                                } else {
-                                    console.log('Error getting facebook profile picture', response);
-                                }
+                            const picture = response.picture ? response.picture.data.url : '';
+                            if (picture === '') {
+                                window.FB.api(`/${userId}/picture`, function (response) {
+                                    console.log('fb pic resp', response);
+                                    if (response && !response.error) {
+                                        const picture = response.data.url;
+                                        let userDetails = { ...response, age, picture };
+                                        setTimeout(() => {
+                                            setUserDetails(userDetails);
+                                            setLoading(false);
+                                        }, 500);
+                                    } else {
+                                        console.log('Error getting facebook profile picture', response);
+                                    }
+                                });
+                            }
+                            else {
+                                let userDetails = { ...response, age, picture };
                                 setTimeout(() => {
                                     setUserDetails(userDetails);
                                     setLoading(false);
                                 }, 500);
-                            });
+                            }
                         }
                         else {
                             console.log('Error getting facebook data', response);
