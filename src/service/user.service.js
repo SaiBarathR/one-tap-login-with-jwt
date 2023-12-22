@@ -1,8 +1,9 @@
+import { urls } from "../config";
 import { AuthServices } from "./auth.service";
 
 const UserService = (function () {
     let service = {};
-    const baseUrl = 'http://localhost:8080/api';
+    const baseUrl = urls.baseURL;
     let headers = { 'Content-Type': 'application/json', }
     const urlList = {
         usersInfo: baseUrl + '/userInfo',
