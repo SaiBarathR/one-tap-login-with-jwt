@@ -1,0 +1,1 @@
+export const genderTypes = ['Prefer not to Answer', 'Male', 'Female', 'Non-Binary', 'Other']
