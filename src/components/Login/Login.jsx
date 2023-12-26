@@ -61,18 +61,23 @@ export default function Login() {
   const facebookLogin = (response) => SignInService.facebookLogin(navigateTo, setLoading)
 
   return (
-    <div className="flex flex-col gap-5 h-screen w-full  bg-[#F2F4F3] items-center justify-center">
-      <form id="signIn/signUpForm" className="flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
-        <h1 className="text-4xl font-medium text-[#2D3B48] self-start">{`Sign ${isNewUser ? `up` : `in`}`}</h1>
+    <div className="card flex flex-col gap-5 h-screen w-full items-center justify-center">
+      <form id="signIn/signUpForm" className=" card flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
+        <h1 className="text-4xl font-medium  self-start">{`Sign ${isNewUser ? `up` : `in`}`}</h1>
         {isNewUser && <> <InputRenderer onChange={handleChangeInputItems} type="text" name='name' placeholder="Name" value={userInfo.name} required={true} />
           <InputRenderer onChange={handleChangeInputItems} type="number" name='age' placeholder="Age" value={userInfo.age} required={true} />
           <Select
             label={"Select Gender"}
             variant="bordered"
             name="gender"
+            color="primary"
             selectedKeys={[userInfo.gender || "Prefer not to Answer"]}
             onChange={handleChangeInputItems}
-            classNames={{ value: "text-black" }}
+            classNames={{
+              value: "text-white",
+              popoverContent: "bg-[#2D3B48] text-white",
+              label: "text-[#adafb1] text-sm font-medium",
+            }}
           >
             {genderTypes.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}
           </Select>
@@ -98,13 +103,13 @@ export default function Login() {
         <TextActionRenderer text={isNewUser ? "Already have an account?" : "Don't have an account?"} action={isNewUser ? "Sign in" : "Sign up"} onClickAction={() => { setIsNewUser((prev) => !prev) }} />
         <ButtonRenderer loading={loading} type="submit" text={`Sign ${isNewUser ? `up` : `in`}`} />
         {loading ?
-          <p className="text-[#2D3B48] text-sm font-medium">Please wait while we {isNewUser ? `sign you up` : `sign you in`}...</p>
+          <p className="text-[#bfc2c4] text-sm font-medium">Please wait while we {isNewUser ? `sign you up` : `sign you in`}...</p>
           :
           <>
             <div className="flex flex-row gap-2 items-center justify-center">
-              <hr className="w-1/4 border-[#2D3B48] border-1" />
-              <p className="text-[#2D3B48] text-sm font-medium">Or</p>
-              <hr className="w-1/4 border-[#2D3B48] border-1" />
+              <hr className="w-1/4 border-[#bfc2c4] border-1" />
+              <p className="text-[#bfc2c4] text-sm font-medium">Or</p>
+              <hr className="w-1/4 border-[#bfc2c4] border-1" />
             </div>
             <ButtonRenderer type="button" text="Sign in with Google" imgSrc="https://img.icons8.com/fluency/48/000000/google-logo.png" onClickAction={() => { googleLogin() }} />
             <ButtonRenderer type="button" text="Sign in with Facebook" imgSrc="https://img.icons8.com/fluency/48/000000/facebook-new.png" onClickAction={facebookLogin} />
