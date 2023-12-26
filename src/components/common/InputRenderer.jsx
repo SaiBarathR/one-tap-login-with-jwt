@@ -3,12 +3,16 @@ import { EyeFilledIcon } from "../../assets/icons/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../../assets/icons/EyeSlashFilledIcon";
 
 export default function InputRenderer({ className, error, required, placeholder, helperText, value, onClickShowPassword, ...props }) {
-    return (         
+    return (
         <Input
             value={value || ''}
             className={className + " text-left"}
             {...props}
             size="md"
+            color="primary"
+            classNames={{
+                label: "text-[#adafb1] text-sm font-medium",
+            }}
             isRequired={required}
             fullWidth={true}
             isInvalid={error}
