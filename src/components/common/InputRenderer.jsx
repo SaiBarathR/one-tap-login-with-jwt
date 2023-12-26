@@ -10,6 +10,7 @@ export default function InputRenderer({ className, error, required, placeholder,
             {...props}
             size="md"
             isRequired={required}
+            fullWidth={true}
             isInvalid={error}
             label={placeholder}
             placeholder={"Enter " + placeholder}
