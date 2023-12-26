@@ -57,8 +57,8 @@ export default function Login() {
     <div className="flex flex-col gap-5 h-screen w-full  bg-[#F2F4F3] items-center justify-center">
       <form id="signIn/signUpForm" className="flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
         <h1 className="text-4xl font-medium text-[#2D3B48] self-start">{`Sign ${isNewUser ? `up` : `in`}`}</h1>
-        {isNewUser && <> <InputRenderer onChange={handleChangeInputItems} type="text" name='name' placeholder="Name" value={userInfo.name} required />
-          <InputRenderer onChange={handleChangeInputItems} type="number" name='age' placeholder="Age" value={userInfo.age} required />
+        {isNewUser && <> <InputRenderer onChange={handleChangeInputItems} type="text" name='name' placeholder="Name" value={userInfo.name} required={true} />
+          <InputRenderer onChange={handleChangeInputItems} type="number" name='age' placeholder="Age" value={userInfo.age} required={true} />
           <select name="gender" value={userInfo.gender} placeholder="Gender" onChange={handleChangeInputItems}
             className="w-full border outline-slate-500 border-[#2D3B48] rounded-md bg-transparent px-2 py-1 "
           >
@@ -67,11 +67,11 @@ export default function Login() {
           </select>
         </>
         }
-        <InputRenderer onChange={handleChangeInputItems} type="email" name='email' placeholder="Email Address" value={userInfo.email} required error={!isEmailValid}
+        <InputRenderer onChange={handleChangeInputItems} type="email" name='email' placeholder="Email Address" value={userInfo.email} required={true} error={!isEmailValid}
           helperText={isEmailValid ? "" : "Please enter a valid email address"}
         />
         <div className="flex gap-2 items-start w-full">
-          <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required error={!isPasswordValid}
+          <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required={true} error={!isPasswordValid}
             helperText={isPasswordValid ? "" : "Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character"}
           />
           {
@@ -80,7 +80,7 @@ export default function Login() {
             </Tooltip>
           }
         </div>
-        {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required error={!isConfirmPasswordValid}
+        {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required={true} error={!isConfirmPasswordValid}
           helperText={isConfirmPasswordValid ? "" : "Passwords do not match"}
         />}
         {/* {!isNewUser && <TextActionRenderer text="Forgot your password?" action="Reset password" onClickAction={() => { }} />} */}
