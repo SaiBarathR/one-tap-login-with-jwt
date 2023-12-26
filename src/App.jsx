@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App w-full h-screen text-white">
       <RouterProvider router={router} />
     </div>
   );
