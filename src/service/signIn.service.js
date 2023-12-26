@@ -35,7 +35,8 @@ const SignInService = (function () {
         });
     }
 
-    service.registerOrLoginUser = async (isNewUser, userInfo, navigateTo) => {
+    service.registerOrLoginUser = async (isNewUser, userInfo, navigateTo, loading) => {
+        loading(true);
         const type = isNewUser ? "signUp" : "signIn";
         try {
             const response = await SignInService.handleBothSignInSignUp(userInfo, type);
@@ -46,13 +47,16 @@ const SignInService = (function () {
             }
             else {
                 alert(response.message);
+                loading(false);
             }
         } catch (error) {
             console.log(error);
+            loading(false);
         }
     }
 
-    service.handleGoogleSignIn = async (code, navigateTo) => {
+    service.handleGoogleSignIn = async (code, navigateTo, loading) => {
+        loading(true);
         try {
             const response = await SignInService.googleSignIn({ code: code });
             if (response.status === "success") {
@@ -62,13 +66,17 @@ const SignInService = (function () {
             } else {
                 alert(response.message);
                 AuthServices.removeAuthToken();
+                loading(false);
             }
         } catch (error) {
             AuthServices.removeAuthToken();
+            console.log(error);
+            loading(false);
         }
     }
 
-    service.facebookLogin = (navigateTo) => {
+    service.facebookLogin = (navigateTo, loading) => {
+        loading(true);
         window.FB.login(function (response) {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded, got access token: ', response.authResponse);
@@ -78,12 +86,13 @@ const SignInService = (function () {
                     return
                 }
                 console.error('Facebook login failed, no access token: ', response);
+                loading(false);
             } else {
                 console.error('Facebook login failed, response: ', response);
+                loading(false);
             }
         }, { scope: 'public_profile,email,user_birthday,user_gender' });
     }
-
     return service;
 }());
 
