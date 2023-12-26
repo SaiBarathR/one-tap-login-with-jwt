@@ -4,12 +4,15 @@ import UserService from "../../service/user.service"
 import { AuthServices } from "../../service/auth.service"
 import { useNavigate } from "react-router";
 import ButtonRenderer from "../common/ButtonRenderer";
+import { useState } from "react";
 
 export default function UserInfoRenderer({ userDetails }) {
     const navigateTo = useNavigate();
     const signInType = sessionStorage.getItem('signInType');
+    const [loading, setLoading] = useState(false);
 
     async function deleteAccount() {
+        setLoading(true)
         const resp = window.confirm('Are you sure you want to delete your account?')
         if (resp) {
             const response = await UserService.deleteAccount(userDetails.email)
@@ -22,7 +25,10 @@ export default function UserInfoRenderer({ userDetails }) {
                 window.location.reload();
             } else {
                 alert('Error deleting account')
+                setLoading(false)
             }
+        } else {
+            setLoading(false)
         }
     }
 
@@ -46,7 +52,7 @@ export default function UserInfoRenderer({ userDetails }) {
                 {userDetails.email && <InfoRenderer name="Email:" value={userDetails.email} />}
             </div>
             <div className={`w-full flex ${(signInType === 'manual' || signInType === 'google') ? 'justify-between' : 'justify-end'}`}>
-                {(signInType === 'manual' || signInType === 'google') && <ButtonRenderer text={'Delete Account'} onClick={deleteAccount} />}
+                {(signInType === 'manual' || signInType === 'google') && <ButtonRenderer loading={loading} text={'Delete Account'} onClick={deleteAccount} />}
                 <Logout />
             </div>
         </div>
