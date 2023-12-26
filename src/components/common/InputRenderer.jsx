@@ -1,16 +1,30 @@
+import { Input } from "@nextui-org/react";
+import { EyeFilledIcon } from "../../assets/icons/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "../../assets/icons/EyeSlashFilledIcon";
 
-export default function InputRenderer({ className, error, helperText, value, onClickShowPassword, ...props }) {
-    return (
-        <div className="flex flex-col w-full">
-            <input
-                value={value || ''}
-                className={"border outline-slate-500 border-[#2D3B48] rounded-md bg-transparent px-2 py-1 " + className}
-                {...props}
-            />
-            <div className="flex justify-end">
-                {(props.name === "password" || props.name === "confirmPassword") && <button type="button" onClick={onClickShowPassword} className="text-[#2D3B48] text-sm font-medium">{props.type === "password" ? "Show" : "Hide"}</button>}
-            </div>
-            {helperText && error && <label className={`text-red-500 text-sm text-left ml-1 mt-1`}>{helperText}</label>}
-        </div>
+export default function InputRenderer({ className, error, required, placeholder, helperText, value, onClickShowPassword, ...props }) {
+    return (         
+        <Input
+            value={value || ''}
+            className={className + " text-left"}
+            {...props}
+            size="md"
+            isRequired={required}
+            isInvalid={error}
+            label={placeholder}
+            placeholder={"Enter " + placeholder}
+            errorMessage={helperText}
+            variant="bordered"
+            endContent={
+                (props.name === "password" || props.name === "confirmPassword") &&
+                <button className="focus:outline-none" type="button" onClick={onClickShowPassword}>
+                    {props.type === "password" ? (
+                        <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    ) : (
+                        <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    )}
+                </button>
+            }
+        />
     )
 }
