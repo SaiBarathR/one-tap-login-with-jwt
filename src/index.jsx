@@ -5,12 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { googleConfig } from './config';
+import { NextUIProvider } from "@nextui-org/react";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   //add your google web client id below in the clientId prop
   <GoogleOAuthProvider clientId={googleConfig.client_id}>
     <React.StrictMode>
+      <NextUIProvider>
+        <App />
+      </NextUIProvider>
       <App />
     </React.StrictMode>
   </GoogleOAuthProvider>
