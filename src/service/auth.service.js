@@ -2,7 +2,7 @@ import jwt_decode from "jwt-decode";
 
 const isJwtTokenExpired = () => {
     let isExpired = false;
-    let decodedToken: any;
+    let decodedToken = null;
     const token = getAuthToken();
     try {
         if (token !== null && token !== '') {
@@ -26,7 +26,7 @@ const getAuthToken = () => {
     return sessionStorage.getItem('token');
 };
 
-const setAuthToken = (token,type) => {
+const setAuthToken = (token, type) => {
     sessionStorage.setItem('token', token);
     sessionStorage.setItem('signInType', type);
 };
