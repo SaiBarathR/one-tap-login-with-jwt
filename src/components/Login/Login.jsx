@@ -1,9 +1,8 @@
 import TextActionRenderer from "../common/TextActionRenderer";
 import ButtonRenderer from "../common/ButtonRenderer.jsx";
 import { useEffect, useState } from "react";
+import { Tooltip, Button } from "@nextui-org/react";
 import InputRenderer from "../common/InputRenderer";
-import { IconButton, Tooltip } from "@mui/material";
-import { Info } from "@mui/icons-material";
 import SignInService from "../../service/signIn.service";
 import { AuthServices } from '../../service/auth.service'
 import { useNavigate } from "react-router";
@@ -72,14 +71,14 @@ export default function Login() {
           helperText={isEmailValid ? "" : "Please enter a valid email address"}
         />
         <div className="flex gap-2 items-start w-full">
-          <InputRenderer  onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required error={!isPasswordValid}
+          <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required error={!isPasswordValid}
             helperText={isPasswordValid ? "" : "Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character"}
           />
-          {isNewUser && <Tooltip title="Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character" arrow placement="top">
-            <IconButton>
-              <Info />
-            </IconButton>
-          </Tooltip>}
+          {
+            isNewUser && <Tooltip content="Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character" showArrow placement="top">
+              <Button isIconOnly className="rounded-full" size="sm">?</Button>
+            </Tooltip>
+          }
         </div>
         {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required error={!isConfirmPasswordValid}
           helperText={isConfirmPasswordValid ? "" : "Passwords do not match"}
