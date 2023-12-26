@@ -2,12 +2,15 @@ import { useNavigate } from "react-router";
 import { AuthServices } from "../service/auth.service";
 import ButtonRenderer from "./common/ButtonRenderer";
 import { googleLogout } from '@react-oauth/google';
+import { useState } from "react";
 
 export default function Logout() {
 
+    const [loading, setLoading] = useState(false)
     const navigateTo = useNavigate();
 
     const handleLogout = () => {
+        setLoading(true)
         switch (sessionStorage.getItem('signInType')) {
             case 'googleOneTap':
             case 'google':
@@ -26,7 +29,8 @@ export default function Logout() {
         AuthServices.removeAuthToken();
         localStorage.clear();
         navigateTo('/login');
+        setLoading(false)
     }
 
-    return <ButtonRenderer className={'py-2'} text="Logout" onClickAction={handleLogout} />
+    return <ButtonRenderer loading={loading} className={'py-2'} text="Logout" onClickAction={handleLogout} />
 }
