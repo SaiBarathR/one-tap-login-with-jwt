@@ -15,7 +15,6 @@ root.render(
       <NextUIProvider>
         <App />
       </NextUIProvider>
-      <App />
     </React.StrictMode>
   </GoogleOAuthProvider>
 );
