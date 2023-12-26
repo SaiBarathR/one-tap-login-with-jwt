@@ -1,11 +1,11 @@
-import { Skeleton } from "@mui/material";
+import { Skeleton } from "@nextui-org/react";
 
 export default function UserInfoSkeleton() {
     return <>
-        <Skeleton variant="circular" width={50} height={50} />
-        <Skeleton variant="rounded" width={"40%"} height={40} />
-        <Skeleton variant="rounded" width={"40%"} height={40} />
-        <Skeleton variant="rounded" width={"40%"} height={40} />
-        <Skeleton variant="rounded" width={"40%"} height={40} />
+        <Skeleton className="flex rounded-full w-20 h-20" />
+        <Skeleton className="flex rounded-lg h-10 w-1/2" />
+        <Skeleton className="flex rounded-lg h-10 w-1/2" />
+        <Skeleton className="flex rounded-lg h-10 w-1/2" />
+        <Skeleton className="flex rounded-lg h-10 w-1/2" />
     </>
 }
