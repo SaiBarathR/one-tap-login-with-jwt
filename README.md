@@ -4,9 +4,14 @@ Note that this is the client side of the app. The server side can be found [JWT 
 
 This is a simple login app using JWT authentication with Sign in / Sign up, Sign in with Google and One Tap Login and Sign in with Facebook. The app is built with Node.js, Express, PostgreSQL, Sequelize ORM, JWT, Google One Tap and Facebook OAuth.
 
+The app is built with Vite and React. The UI is built with Next UI and Tailwind CSS. The animations are done with Framer Motion.
+
+The server side is deployed on Heroku and the client side is deployed on netlify. The app can be found [here](https://login-page-with-jwt-auth-one-tap-sign.netlify.app/login).
+
 ## Table of Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Prerequisites](#prerequisites)
 - [Api Reference](#api-reference)
 - [Installation](#installation)
@@ -23,6 +28,23 @@ This is a simple login app using JWT authentication with Sign in / Sign up, Sign
 - Sign in with Facebook
 - JWT authentication
 - React Router
+
+## Screenshots
+
+### Home Page Sign in
+![Screenshot 2023-12-31 at 5 32 34 PM](https://github.com/SaiBarathR/login-page-with-jwt-auth-one-tap-sign-in/assets/58382813/55b118c0-5fc9-4906-97ae-7668d785bb7e)
+
+### Home Page Sign up
+![Screenshot 2023-12-31 at 5 31 07 PM](https://github.com/SaiBarathR/login-page-with-jwt-auth-one-tap-sign-in/assets/58382813/ce4bb277-d365-4b59-b733-98d2c5d29c90)
+
+### Loading Screen
+
+![Screenshot 2023-12-31 at 5 36 15 PM](https://github.com/SaiBarathR/login-page-with-jwt-auth-one-tap-sign-in/assets/58382813/7408d9c6-12d1-4948-bbcc-0f928031240c)
+
+### User Data
+
+![Screenshot 2023-12-31 at 5 38 08 PM](https://github.com/SaiBarathR/login-page-with-jwt-auth-one-tap-sign-in/assets/58382813/9a27c557-a36b-44fa-8ac6-173e718190cf)
+
 
 ### Prerequisites
 
