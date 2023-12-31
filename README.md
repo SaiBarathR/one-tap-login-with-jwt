@@ -121,7 +121,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Sai Barath - [LinkedIn](https://www.linkedin.com/in/sai-barath-r-0b0b3b1b2/) 
+Sai Barath - [LinkedIn](https://www.linkedin.com/in/saibarath-r/) 
 
 
 
