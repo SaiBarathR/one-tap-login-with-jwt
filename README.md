@@ -1,71 +1,109 @@
-# Getting Started with Create React App
+# Login App with JWT and One Tap Login Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Note that this is the client side of the app. The server side can be found [JWT Login Node Service](https://github.com/SaiBarathR/jwt-login-node-service).
 
-## Available Scripts
+This is a simple login app using JWT authentication with Sign in / Sign up, Sign in with Google and One Tap Login and Sign in with Facebook. The app is built with Node.js, Express, PostgreSQL, Sequelize ORM, JWT, Google One Tap and Facebook OAuth.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Api Reference](#api-reference)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Built With Vite and React](#built-with-vite-and-react)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Sign in / Sign up with email and password
+- Sign in with Google
+- One Tap Login
+- Sign in with Facebook
+- JWT authentication
+- React Router
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/en/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Google One Tap](https://developers.google.com/identity/one-tap/web/overview)
+- [Facebook OAuth](https://developers.facebook.com/docs/facebook-login/web)
+- [Google People API](https://developers.google.com/people/quickstart/js)
 
-### `npm run build`
+### Api Reference
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-  Google Api - https://medium.com/analytics-vidhya/adding-sign-in-with-google-to-your-website-b82755b79b31 
+- Facebook SDK - https://dev.to/quod_ai/how-to-integrate-facebook-login-api-into-your-react-app-33de
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repo
 
-### `npm run eject`
+```sh
+git clone https://github.com/SaiBarathR/login-page-with-jwt-auth-one-tap-sign-in.git
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Install NPM packages
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+cd login-page-with-jwt-auth-one-tap-sign-in
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Configuration
 
-## Learn More
+Environment variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Create a `.env` file in the root directory of the project.
+- Add the following environment variables to the `.env` file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
 
-### Code Splitting
+VITE_APP_GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+VITE_APP_FACEBOOK_APP_ID=YOUR_FACEBOOK_APP_ID
 
-### Analyzing the Bundle Size
+VITE_APP_BASE_URL=http://localhost:[Port of node server]/api
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
 
-### Making a Progressive Web App
+### Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Run the app
 
-### Advanced Configuration
+```sh
+npm run dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Deployment
+### Built With Vite and React
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Next UI](https://nextui.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [JWT Decode](https://www.npmjs.com/package/jwt-decode)
+- [React OAuth Google](https://www.npmjs.com/package/@react-oauth/google)
+- [Vite](https://vitejs.dev/)
 
-### `npm run build` fails to minify
+### License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# login-page-with-one-tap-sign-in
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Sai Barath - [LinkedIn](https://www.linkedin.com/in/sai-barath-r-0b0b3b1b2/) 
+
+
+
+
+
+
+
