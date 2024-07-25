@@ -2,27 +2,35 @@ import { BarGraphLoading } from "../loaders/BarGraphLoading.jsx";
 import { useEffect, useState } from "react";
 import CustomBarGraph from "../common/CustomBarGraph.jsx";
 import ReportService from "../../service/reports.service.js";
+import { ToastContainer, toast } from 'react-toastify';
 
 export const Reports = () => {
 
     const [loading, setLoading] = useState(false);
+    const [count, setCount] = useState(0);
     const [rowData, setRowData] = useState({
         queued: [],
         request: []
     })
+    const alert = (message) => toast.error(message, { position: "top-right", autoClose: 5000, hideProgressBar: true, closeButton: false, closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined, });
 
     const fetchReports = async () => {
+        count === 0 && setLoading(true);
         try {
             const response = await ReportService.getReports();
             if (response && response.status === 'success') {
                 console.log("Reports Data:", response.data);
+                count === 0 && alert("Data fetched successfully");
                 setRowData(response.data);
             } else {
                 console.error("Error fetching Reports Data:", response);
+                count === 0 && alert("Error fetching Reports Data");
             }
         } catch (err) {
             console.error("Error fetching Reports Data:", err);
+            count === 0 && alert("Error fetching Reports Data");
         }
+        setCount((prev) => prev + 1);
         setLoading(false);
     }
 
@@ -59,6 +67,7 @@ export const Reports = () => {
     console.log("requestChartData", requestChartData);
     return (
         <div className='flex flex-col gap-3 items-center justify-between w-full'>
+            <ToastContainer />
             {loading ?
                 <>
                     <BarGraphLoading />
