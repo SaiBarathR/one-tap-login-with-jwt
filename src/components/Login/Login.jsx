@@ -22,8 +22,11 @@ export default function Login() {
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    localStorage.clear();
-    sessionStorage.clear();
+    if(localStorage.getItem('token')){
+        navigateTo('/home');
+    }else {
+      localStorage.clear();
+    }
   }, [])
 
   // reset password field when switching between sign in and sign up
