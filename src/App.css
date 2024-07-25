@@ -4,8 +4,8 @@
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 8px;
   background-color: rgb(240, 240, 240);
   border-radius: 5px;
 }
@@ -13,11 +13,6 @@
 ::-webkit-scrollbar-thumb {
   background-color: rgb(190, 190, 190);
   border-radius: 5px;
-}
-
-* {
-  scrollbar-color: rgb(190, 190, 190) rgba(240, 240, 240, 0.5);
-  scrollbar-width: 6px;
 }
 
 .App {
