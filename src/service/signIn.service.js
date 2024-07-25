@@ -20,7 +20,7 @@ const SignInService = (function () {
             const data = await response.json();
             if (data.status === "success") {
                 AuthServices.setAuthToken(data.accessToken, 'manual');
-                localStorage.setItem('email', data.email);
+                localStorage.setItem('account', data.account);
                 navigateTo('/home');
             }
             else {

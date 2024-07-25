@@ -7,7 +7,6 @@ import { LineGraphLoading } from "../loaders/LineGraphLoading.jsx";
 export const Reports = () => {
 
     const [loading, setLoading] = useState(false);
-    const [initialLoad, setInitialLoad] = useState(true);
     const initialLoadRef = useRef(true);
     const [rowData, setRowData] = useState({
         queued: [],
@@ -19,8 +18,7 @@ export const Reports = () => {
         if (initialLoadRef.current) setLoading(true);
         try {
             const response = await ReportService.getReports();
-            if (response && response.status === 'success') {
-                console.log("Reports Data:", response.data);
+            if (response && response.status === 'success') {                
                 setRowData(response.data);
             } else {
                 console.error("Error fetching Reports Data:", response);
@@ -32,7 +30,6 @@ export const Reports = () => {
         }
         if (initialLoadRef.current) {
             initialLoadRef.current = false;
-            setInitialLoad(false);
             setLoading(false);
         }
     }
@@ -63,8 +60,7 @@ export const Reports = () => {
 
     const queuedChartData = rowData && processDataForBarChart(rowData.queued);
     const requestChartData = rowData && processDataForBarChart(rowData.request);
-    console.log("queuedChartData", queuedChartData);
-    console.log("requestChartData", requestChartData);
+    
     return (
         <div className='flex flex-col gap-3 items-center justify-between w-full'>
             <ToastContainer />

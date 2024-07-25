@@ -1,10 +1,8 @@
-// import UserInfoRenderer from "./UserInfoRenderer";
-// import { useUserDetails } from "../hooks/useUserDetails";
 import { Reports } from "./Reports.jsx";
 import Logout from "../Logout.jsx";
 import { OzonetelBlue } from "../../assets/icons/OzonetelBlue.jsx";
 
-export default function HomePage() {
+export default function HomePage() {    
 
     return (
         <div className='flex flex-col w-full items-center justify-center flow-report-container'>
