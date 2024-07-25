@@ -13,7 +13,7 @@ export default function CustomLineGraph({ data, title }) {
 
     return (
         data.length > 0 && <div className='w-full border custom-line-graph-container flex flex-col'>
-            <div className='w-full flex border-b-1 h-10 items-center pl-2'>
+            <div className='w-full flex border-b-1 h-10 items-center pl-3'>
                 <p className={'text-xl font-medium text-black text-left'}>{title}</p>
             </div>
             <div className='w-[100%] h-[32vh] 2xl:h-[36vh] mt-4'>

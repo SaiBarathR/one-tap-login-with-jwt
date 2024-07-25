@@ -75,7 +75,7 @@ export const Reports = () => {
                 </>
                 :
                 <>
-                    {requestChartData && requestChartData.length > 0 && <CustomBarGraph data={requestChartData} title='Request' />}
+                    {requestChartData && requestChartData.length > 0 && <CustomBarGraph data={requestChartData} title='Requests' />}
                     {queuedChartData && queuedChartData.length > 0 && <CustomBarGraph data={queuedChartData} title='Queues' />}
                 </>
             }

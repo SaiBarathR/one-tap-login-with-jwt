@@ -50,7 +50,7 @@ export default function Login() {
       <Ozonetel />
       <div className={'m-1'}>
         <form id="signIn/signUpForm" className="bg-white text-black flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px] w-[280px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
-          <h1 className="text-3xl font-medium  self-center">{isNewUser ? 'Sign Up' : 'Login'}</h1>
+          <h1 className="text-2xl pl-1 font-medium  self-start">{isNewUser ? 'Sign Up' : 'Login'}</h1>
           <InputRenderer onChange={handleChangeInputItems} type="text" name='account' placeholder="Account" value={userInfo.account} required={true} error={!isAccountValid}
             helperText={isAccountValid ? "" : "Please enter a value greater than 3 characters"}
           />
