@@ -11,7 +11,7 @@ export default function Logout() {
 
     const handleLogout = () => {
         setLoading(true)
-        switch (sessionStorage.getItem('signInType')) {
+        switch (localStorage.getItem('signInType')) {
             case 'googleOneTap':
             case 'google':
                 googleLogout();

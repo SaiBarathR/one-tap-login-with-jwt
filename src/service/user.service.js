@@ -7,12 +7,12 @@ const UserService = (function () {
     let headers = { 'Content-Type': 'application/json', }
     const urlList = {
         usersInfo: baseUrl + '/userInfo',
-        deleteAccount: (email) => baseUrl + `/deleteAccount/${sessionStorage.getItem('signInType')}/${email}`,
+        deleteAccount: (email) => baseUrl + `/deleteAccount/${localStorage.getItem('signInType')}/${email}`,
     }
 
     service.getUserInfo = function () {
         const header = { ...headers, 'x-access-token': AuthServices.getAuthToken() }
-        const body = { email: localStorage.getItem('email'), type: sessionStorage.getItem('signInType') }
+        const body = { email: localStorage.getItem('email'), type: localStorage.getItem('signInType') }
         return fetch(urlList.usersInfo, {
             method: 'POST',
             headers: header,

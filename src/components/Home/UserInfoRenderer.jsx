@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function UserInfoRenderer({ userDetails, loadingUser }) {
     const navigateTo = useNavigate();
-    const signInType = sessionStorage.getItem('signInType');
+    const signInType = localStorage.getItem('signInType');
     const [loading, setLoading] = useState(false);
 
     async function deleteAccount() {

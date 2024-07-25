@@ -13,7 +13,7 @@ export function useUserDetails() {
             navigateTo('/login');
         }
 
-        switch (sessionStorage.getItem('signInType')) {
+        switch (localStorage.getItem('signInType')) {
             case 'googleOneTap':
                 getGoogleUserData(AuthServices.getAuthToken());
                 break;
