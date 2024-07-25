@@ -1,37 +1,40 @@
-import { BarGraphLoading } from "../loaders/BarGraphLoading.jsx";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import CustomBarGraph from "../common/CustomBarGraph.jsx";
 import ReportService from "../../service/reports.service.js";
 import { ToastContainer, toast } from 'react-toastify';
+import { LineGraphLoading } from "../loaders/LineGraphLoading.jsx";
 
 export const Reports = () => {
 
     const [loading, setLoading] = useState(false);
-    const [count, setCount] = useState(0);
+    const [initialLoad, setInitialLoad] = useState(true);
+    const initialLoadRef = useRef(true);
     const [rowData, setRowData] = useState({
         queued: [],
         request: []
-    })
+    });
     const alert = (message) => toast.error(message, { position: "top-right", autoClose: 5000, hideProgressBar: true, closeButton: false, closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined, });
 
     const fetchReports = async () => {
-        count === 0 && setLoading(true);
+        if (initialLoadRef.current) setLoading(true);
         try {
             const response = await ReportService.getReports();
             if (response && response.status === 'success') {
                 console.log("Reports Data:", response.data);
-                count === 0 && alert("Data fetched successfully");
                 setRowData(response.data);
             } else {
                 console.error("Error fetching Reports Data:", response);
-                count === 0 && alert("Error fetching Reports Data");
+                if (initialLoadRef.current) alert("Error fetching Reports Data");
             }
         } catch (err) {
             console.error("Error fetching Reports Data:", err);
-            count === 0 && alert("Error fetching Reports Data");
+            if (initialLoadRef.current) alert("Error fetching Reports Data");
         }
-        setCount((prev) => prev + 1);
-        setLoading(false);
+        if (initialLoadRef.current) {
+            initialLoadRef.current = false;
+            setInitialLoad(false);
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
@@ -41,7 +44,6 @@ export const Reports = () => {
         }, 10000);
         return () => clearInterval(interval);
     }, []);
-
 
     const processDataForBarChart = (data) => {
         if (!data || data.length === 0) return [];
@@ -56,13 +58,11 @@ export const Reports = () => {
             }
         });
 
-
-
         return (processedData);
     };
 
     const queuedChartData = rowData && processDataForBarChart(rowData.queued);
-    const requestChartData = rowData && processDataForBarChart(rowData.request)
+    const requestChartData = rowData && processDataForBarChart(rowData.request);
     console.log("queuedChartData", queuedChartData);
     console.log("requestChartData", requestChartData);
     return (
@@ -70,8 +70,8 @@ export const Reports = () => {
             <ToastContainer />
             {loading ?
                 <>
-                    <BarGraphLoading />
-                    <BarGraphLoading />
+                    <LineGraphLoading />
+                    <LineGraphLoading />
                 </>
                 :
                 <>

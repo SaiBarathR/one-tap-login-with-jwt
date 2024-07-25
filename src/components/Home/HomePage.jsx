@@ -6,8 +6,6 @@ import { OzonetelBlue } from "../../assets/icons/OzonetelBlue.jsx";
 
 export default function HomePage() {
 
-    // const { userDetails, loading } = useUserDetails();
-
     return (
         <div className='flex flex-col w-full items-center justify-center flow-report-container'>
             <div className={'w-full h-[74px] flex items-center justify-between px-6 shadow-ozonetel'}>
@@ -16,7 +14,9 @@ export default function HomePage() {
                 </div>
                 <Logout />
             </div>
-            <div className={'w-full my-4 px-4'}>
+            <div className={'w-full mt-2 px-4 overflow-auto'} style={{
+                height: "calc(100vh - 96px)"
+            }}>
                 <Reports />
             </div>
         </div>

@@ -14,9 +14,9 @@ export default function CustomLineGraph({ data, title }) {
     return (
         data.length > 0 && <div className='w-full border custom-line-graph-container flex flex-col'>
             <div className='w-full flex border-b-1 h-10 items-center pl-2'>
-                    <p className={'text-xl font-medium text-black text-left'}>{title}</p>
+                <p className={'text-xl font-medium text-black text-left'}>{title}</p>
             </div>
-            <div className='w-[100%] h-[35vh] mt-4'>
+            <div className='w-[100%] h-[32vh] 2xl:h-[36vh] mt-4'>
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>
                         <YAxis padding={{ top: 5, bottom: 5 }} fontSize={'12px'} type='number' allowDataOverflow style={{ marginRight: "20px" }} dataKey={'value'} />

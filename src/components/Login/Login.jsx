@@ -6,7 +6,7 @@ import InputRenderer from "../common/InputRenderer";
 import SignInService from "../../service/signIn.service";
 import { useNavigate } from "react-router";
 import useFormValidation from "../hooks/useFormValidation";
-import {Ozonetel} from "../../assets/icons/Ozonetel.jsx";
+import { Ozonetel } from "../../assets/icons/Ozonetel.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function Login() {
@@ -18,12 +18,12 @@ export default function Login() {
   const [passwordType, setPasswordType] = useState({ password: "password", confirmPassword: "password" });
   const { isPasswordValid, isConfirmPasswordValid, isAccountValid, isFormValid } = useFormValidation(userInfo, isNewUser);
   const navigateTo = useNavigate();
-  const alert = (message) => toast.error(message, { position: "top-right", autoClose: 5000, hideProgressBar: true, closeButton:false, closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined, });
+  const alert = (message) => toast.error(message, { position: "top-right", autoClose: 5000, hideProgressBar: true, closeButton: false, closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined, });
 
   useEffect(() => {
-    if(localStorage.getItem('token')){
-        navigateTo('/home');
-    }else {
+    if (localStorage.getItem('token')) {
+      navigateTo('/home');
+    } else {
       localStorage.clear();
     }
   }, [])
@@ -47,32 +47,32 @@ export default function Login() {
 
   return (
     <div className="card flex flex-col gap-5 h-screen w-full items-center justify-center">
-      <Ozonetel/>
+      <Ozonetel />
       <div className={'m-1'}>
-      <form id="signIn/signUpForm" className="bg-white text-black flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px] w-[280px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
-        <h1 className="text-3xl font-medium  self-center">{isNewUser ? 'Sign Up' : 'Login'}</h1>
-        <InputRenderer onChange={handleChangeInputItems} type="text" name='account' placeholder="Account" value={userInfo.account} required={true} error={!isAccountValid}
-          helperText={isAccountValid ? "" : "Please enter a value greater than 3 characters"}
-        />
-        <div className="flex gap-2 items-center w-full">
-          <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required={true} error={!isPasswordValid}
-            helperText={isPasswordValid ? "" : "Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character"}
+        <form id="signIn/signUpForm" className="bg-white text-black flex flex-col gap-3 shadow-2xl  md:w-[400px] w-[300px] w-[280px]   rounded-2xl py-4 px-4 overflow-y-auto m-6" onSubmit={handleSubmit}>
+          <h1 className="text-3xl font-medium  self-center">{isNewUser ? 'Sign Up' : 'Login'}</h1>
+          <InputRenderer onChange={handleChangeInputItems} type="text" name='account' placeholder="Account" value={userInfo.account} required={true} error={!isAccountValid}
+            helperText={isAccountValid ? "" : "Please enter a value greater than 3 characters"}
           />
-          {
-            isNewUser && <Tooltip content="Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character" showArrow placement="top">
-              <Button isIconOnly className="rounded-full" size="sm">?</Button>
-            </Tooltip>
-          }
-        </div>
-        {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required={true} error={!isConfirmPasswordValid}
-          helperText={isConfirmPasswordValid ? "" : "Passwords do not match"}
-        />}
-        {/* {!isNewUser && <TextActionRenderer text="Forgot your password?" action="Reset password" onClickAction={() => { }} />} */}
-        <TextActionRenderer text={isNewUser ? "Already have an account?" : "Don't have an account?"} action={isNewUser ? "Sign in" : "Sign up"} onClickAction={() => { setIsNewUser((prev) => !prev) }} />
-        <ButtonRenderer loading={loading} type="submit" text={`Sign ${isNewUser ? `up` : `in`}`} />
-      </form>
+          <div className="flex gap-2 items-center w-full">
+            <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("password")} type={passwordType.password} name='password' placeholder="Password" value={userInfo.password} required={true} error={!isPasswordValid}
+              helperText={isPasswordValid ? "" : "Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character"}
+            />
+            {
+              isNewUser && <Tooltip content="Password requirements are : At least 8 characters, At least 1 uppercase letter, At least 1 lowercase letter, At least 1 number, At least 1 special character" showArrow placement="top">
+                <Button isIconOnly className="rounded-full" size="sm">?</Button>
+              </Tooltip>
+            }
+          </div>
+          {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required={true} error={!isConfirmPasswordValid}
+            helperText={isConfirmPasswordValid ? "" : "Passwords do not match"}
+          />}
+          {/* {!isNewUser && <TextActionRenderer text="Forgot your password?" action="Reset password" onClickAction={() => { }} />} */}
+          <TextActionRenderer text={isNewUser ? "Already have an account?" : "Don't have an account?"} action={isNewUser ? "Sign in" : "Sign up"} onClickAction={() => { setIsNewUser((prev) => !prev) }} />
+          <ButtonRenderer loading={loading} type="submit" text={`Sign ${isNewUser ? `up` : `in`}`} />
+        </form>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div >
   );
 }
