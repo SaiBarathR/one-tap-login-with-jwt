@@ -67,8 +67,6 @@ export default function Login() {
           {isNewUser && <InputRenderer onChange={handleChangeInputItems} onClickShowPassword={() => handleShowPassword("confirmPassword")} type={passwordType.confirmPassword} name='confirmPassword' placeholder="Confirm Password" value={userInfo.confirmPassword} required={true} error={!isConfirmPasswordValid}
             helperText={isConfirmPasswordValid ? "" : "Passwords do not match"}
           />}
-          {/* {!isNewUser && <TextActionRenderer text="Forgot your password?" action="Reset password" onClickAction={() => { }} />} */}
-          <TextActionRenderer text={isNewUser ? "Already have an account?" : "Don't have an account?"} action={isNewUser ? "Sign in" : "Sign up"} onClickAction={() => { setIsNewUser((prev) => !prev) }} />
           <ButtonRenderer loading={loading} type="submit" text={`Sign ${isNewUser ? `up` : `in`}`} />
         </form>
       </div>
