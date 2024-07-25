@@ -23,17 +23,17 @@ const isJwtTokenExpired = () => {
 };
 
 const getAuthToken = () => {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
 };
 
 const setAuthToken = (token, type) => {
-    sessionStorage.setItem('token', token);
-    sessionStorage.setItem('signInType', type);
+    localStorage.setItem('token', token);
+    localStorage.setItem('signInType', type);
 };
 
 const removeAuthToken = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('signInType')
+    localStorage.removeItem('token');
+    localStorage.removeItem('signInType')
 }
 
 const authUser = () => {
