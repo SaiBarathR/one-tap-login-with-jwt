@@ -17,7 +17,7 @@
 
 .App {
   text-align: center;
-  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+  /*background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');*/
   background-position: center;
   image-rendering: optimizeQuality;
   background-size: cover;
@@ -27,7 +27,22 @@
 }
 
 .card {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
+  /*backdrop-filter: blur(16px) saturate(180%);*/
+  /*-webkit-backdrop-filter: blur(16px) saturate(180%);*/
+  background-color: #008DFF
+}
+/* InputRenderer.css */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.custom-line-graph-container {
+  background: #FFF;
+  border-radius: 12px;
+  /*padding: 10px 15px 10px 15px;*/
+}
+
+.drop-shadow-light {
+  filter: drop-shadow(0px 10px 60px rgba(226, 236, 249, 0.50));
 }

@@ -1,19 +1,24 @@
-import UserInfoRenderer from "./UserInfoRenderer";
-import { useUserDetails } from "../hooks/useUserDetails";
+// import UserInfoRenderer from "./UserInfoRenderer";
+// import { useUserDetails } from "../hooks/useUserDetails";
+import { Reports } from "./Reports.jsx";
+import Logout from "../Logout.jsx";
+import { OzonetelBlue } from "../../assets/icons/OzonetelBlue.jsx";
 
 export default function HomePage() {
 
-    const { userDetails, loading } = useUserDetails();
+    // const { userDetails, loading } = useUserDetails();
 
     return (
-        <div className="card w-full h-screen">
-            <div className="flex flex-col gap-5 h-screen w-full  items-center justify-center">
-                {(userDetails || loading) ? <UserInfoRenderer userDetails={userDetails} loadingUser={loading} /> :
-                    <div className="card flex flex-col min-w-[50%] h-1/2  rounded-md shadow-md  items-center justify-center">
-                        <h1 className="text-2xl flex font-medium text-[#b3b5b6]">{'No Data to display :('}</h1>
-                    </div>
-                }
+        <div className='flex flex-col w-full items-center justify-center flow-report-container'>
+            <div className={'w-full h-[74px] flex items-center justify-between px-6 shadow-ozonetel'}>
+                <div className={'mb-2'}>
+                    <OzonetelBlue />
+                </div>
+                <Logout />
             </div>
-        </div >
+            <div className={'w-full my-4 px-4'}>
+                <Reports />
+            </div>
+        </div>
     );
 }

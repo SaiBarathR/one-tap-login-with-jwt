@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,11 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   //add your google web client id below in the clientId prop
   <GoogleOAuthProvider clientId={googleConfig.client_id}>
-    <React.StrictMode>
       <NextUIProvider>
         <App />
       </NextUIProvider>
-    </React.StrictMode>
   </GoogleOAuthProvider>
 );
 

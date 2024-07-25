@@ -11,7 +11,7 @@ export default function InputRenderer({ className, error, required, placeholder,
             size="md"
             color="primary"
             classNames={{
-                label: "text-[#adafb1] text-sm font-medium",
+                label: "text-[#000000] text-sm font-medium",
             }}
             isRequired={required}
             fullWidth={true}

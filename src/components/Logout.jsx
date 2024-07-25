@@ -32,5 +32,5 @@ export default function Logout() {
         setLoading(false)
     }
 
-    return <ButtonRenderer loading={loading} className={'py-2'} text="Logout" onClickAction={handleLogout} />
+    return <ButtonRenderer loading={loading} className={'h-8 rounded-lg'} text="Logout" onClickAction={handleLogout} />
 }
