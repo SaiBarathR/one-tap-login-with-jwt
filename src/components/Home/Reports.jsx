@@ -9,7 +9,7 @@ export const Reports = () => {
     const [loading, setLoading] = useState(false);
     const initialLoadRef = useRef(true);
     const [rowData, setRowData] = useState({
-        queued: [],
+        dialedHour: [],
         request: []
     });
     const alert = (message) => toast.error(message, { position: "top-right", autoClose: 5000, hideProgressBar: true, closeButton: false, closeOnClick: true, pauseOnHover: false, draggable: false, progress: undefined, });
@@ -42,25 +42,30 @@ export const Reports = () => {
         return () => clearInterval(interval);
     }, []);
 
-    const processDataForBarChart = (data) => {
+    const processDataForBarChart = (data, type) => {
         if (!data || data.length === 0) return [];
         const sortedData = data.sort((a, b) => new Date(a.value) - new Date(b.value));
         const processedData = sortedData.map((item) => {
             const value = item.value;
             const score = item.score;
-            const label = new Date(value).toLocaleTimeString();
+            let label;
+            if (type === "dialedHour") {
+                const date = new Date(value + ":00:00");
+                label = date.getHours();
+            } else {
+                label = new Date(value).toLocaleTimeString();
+            }
             return {
                 label: label,
                 value: score,
-            }
+            };
         });
-
-        return (processedData);
+        return processedData;
     };
 
-    const queuedChartData = rowData && processDataForBarChart(rowData.queued);
-    const requestChartData = rowData && processDataForBarChart(rowData.request);
-    
+    const dialedHourChartData = rowData && processDataForBarChart(rowData.dialedHour, 'dialedHour');
+    const requestChartData = rowData && processDataForBarChart(rowData.request, 'request');
+
     return (
         <div className='flex flex-col gap-3 items-center justify-between w-full'>
             <ToastContainer />
@@ -72,7 +77,7 @@ export const Reports = () => {
                 :
                 <>
                     {requestChartData && requestChartData.length > 0 && <CustomBarGraph data={requestChartData} title='Requests' />}
-                    {queuedChartData && queuedChartData.length > 0 && <CustomBarGraph data={queuedChartData} title='Dialled' />}
+                    {dialedHourChartData && dialedHourChartData.length > 0 && <CustomBarGraph data={dialedHourChartData} title='Dialled' />}
                 </>
             }
         </div>
