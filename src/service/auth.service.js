@@ -14,7 +14,9 @@ const removeAuthToken = () => {
 
 const authUser = () => {
     const token = getAuthToken();
-    return (token === "true" || token === true)
+    const isAuth = (token !== null && token !== undefined) ? true : false;
+    console.log('isAuth', isAuth)
+    return isAuth;
 }
 
 export const AuthServices = {
