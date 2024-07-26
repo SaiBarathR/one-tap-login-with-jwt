@@ -25,7 +25,7 @@ export default function CustomLineGraph({ data, title }) {
                             cursor={false}
                         />
                         <Line type="monotone" dataKey="value" stroke='#5932EA' activeDot={{ r: 8 }} />
-                        <XAxis padding={{ left: 10, right: 10 }} fontSize={'12px'} allowDataOverflow dataKey="label" tickLine={false} axisLine={false} />
+                        <XAxis padding={{ left: 10, right: 10 }} fontSize={'12px'} allowDataOverflow dataKey="label" tickLine={false} axisLine={true} />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
