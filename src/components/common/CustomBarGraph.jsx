@@ -4,7 +4,7 @@ export default function CustomLineGraph({ data, title }) {
         if (active && payload && payload.length) {
             return (
                 <div className="text-white bg-[#3D8BF8] rounded-lg p-2 ">
-                    <p className="label">{`${payload[0].payload?.label} : ${payload[0].payload?.value}`}</p>
+                    <p  className="label">{`${payload[0].payload?.label} : ${payload[0].payload?.value}`}</p>
                 </div>
             );
         }
