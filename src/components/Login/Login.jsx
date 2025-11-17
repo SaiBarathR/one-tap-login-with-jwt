@@ -74,7 +74,7 @@ export default function Login() {
             selectedKeys={[userInfo.gender || "Prefer not to Answer"]}
             onChange={handleChangeInputItems}
             classNames={{
-              value: "text-white",
+              value: "!text-white",
               popoverContent: "bg-[#2D3B48] text-white",
               label: "text-[#adafb1] text-sm font-medium",
             }}
